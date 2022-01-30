@@ -1,18 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:screenOrientation="portrait"
     tools:context=".MainActivity">
 
+    <!--Display if bluetooth is available-->
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/bluetoothStatusTv"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:textAlignment="center"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!--Bluetooth icon-->
+    <ImageView
+        android:id="@+id/bluetoothStatusIv"
+        android:layout_width="50dp"
+        android:layout_height="50dp" />
+
+    <!--On button-->
+    <Button
+        android:id="@+id/onBtn"
+        android:minWidth="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Turn On"
+        style="@style/Base.Widget.AppCompat.Button.Colored"/>
+
+    <!--Off button-->
+    <Button
+        android:id="@+id/offBtn"
+        android:minWidth="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Turn Off"
+        style="@style/Base.Widget.AppCompat.Button.Colored"/>
+
+    <!--Discoverable button-->
+    <Button
+        android:id="@+id/discoverableBtn"
+        android:minWidth="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make Discoverable"
+        style="@style/Base.Widget.AppCompat.Button.Colored"/>
+
+    <!--Get list of paired devices button-->
+    <Button
+        android:id="@+id/pairedBtn"
+        android:minWidth="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get Paired"
+        style="@style/Base.Widget.AppCompat.Button.Colored"/>
+
+    <!--TextView to show paired devices-->
+    <TextView
+        android:id="@+id/pairedTv"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:minWidth="200dp" />
+
+    <!--Button to pick a device to connect to-->
+    <Button
+        android:id="@+id/connectBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Connect to a Device" />
+
+</LinearLayout>
