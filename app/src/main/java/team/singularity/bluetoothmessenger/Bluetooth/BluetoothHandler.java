@@ -23,15 +23,16 @@ import team.singularity.bluetoothmessenger.MainActivity;
 /** Made by Edison Bregger 1-29-2022 for FRC team 5066 Singularity **/
 
 // TODO: don't put context in a variable
+    //TODO: put checks to make sure bluetooth is on/available just about everywhere
 
-public class BluetoothHandler {
+public class BluetoothHandler extends MainActivity {
 
     final String TAG = "BluetoothHandler";
 
     Activity activity;
     Context context;
     BluetoothAdapter btAdapter;
-    //String macAddress; //see if there's some way of getting this
+    //String macAddress; //TODO: see if there's some way of getting this, if not redo identification system
 
     public static final int REQUEST_ENABLE_BT = 0;
     public static final int REQUEST_DISCOVER_BT = 1;
@@ -150,5 +151,29 @@ public class BluetoothHandler {
 
     public void disconnect() {
 
+    }
+
+    public void send(String message) {
+
+    }
+
+    public void send(String address, String message) {
+        this.connectTo(address);
+        this.send(message);
+        this.disconnect();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        switch (requestCode) {
+            case BluetoothHandler.REQUEST_ENABLE_BT:
+            if (resultCode == RESULT_OK) {
+                    // bluetooth is on
+                } else {
+                    Log.e(TAG, "User denied access to bluetooth"); //probably
+                }
+            break;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

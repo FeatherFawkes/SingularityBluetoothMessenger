@@ -32,8 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        context = this;
-        bt = new BluetoothHandler(context);
+        bt = new BluetoothHandler(this);
 
         bluetoothStatusTv = findViewById(R.id.bluetoothStatusTv);
         pairedTv          = findViewById(R.id.pairedTv);
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         offBtn            = findViewById(R.id.offBtn);
         discoverBtn       = findViewById(R.id.discoverableBtn);
         pairedBtn         = findViewById(R.id.pairedBtn);
-        connectBtn           = findViewById(R.id.connectBtn);
+        connectBtn        = findViewById(R.id.connectBtn);
 
         if (bt.isAvailable()) {
             bluetoothStatusTv.setText("Bluetooth is available");
@@ -107,19 +106,5 @@ public class MainActivity extends AppCompatActivity {
                 //setContentView(R.layout.activity_connect_device);
             }
         });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        switch (requestCode) {
-            case BluetoothHandler.REQUEST_ENABLE_BT:
-                if (resultCode == RESULT_OK) {
-                    // bluetooth is on, TODO: should find a way to put this in BluetoothHandler
-                } else {
-                    Log.e(TAG, "User denied access to bluetooth");
-                }
-                break;
-        }
-        super.onActivityResult(requestCode, resultCode, data);
     }
 }
